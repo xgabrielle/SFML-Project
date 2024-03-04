@@ -155,4 +155,18 @@ void Snake::Cut(int one_segments) // why can't i use numbers in the name when th
 	--lives;
 	if (!lives) { Lose();return; } // do we lose body or just life?
 }
+void Snake::Render(RenderWindow& one_window)
+{
+	if (snakeBody.empty()) { return; }
+	auto head = snakeBody.begin();
+	bodyRectangle.setFillColor(Color::White); // snakes head
+	bodyRectangle.setPosition(head->position.x * graphicsSize, head->position.y * graphicsSize);
+	one_window.draw(bodyRectangle);
 
+	bodyRectangle.setFillColor(Color::Magenta); // snakes body
+	for (auto itr = snakeBody.begin()+1; itr != snakeBody.end(); itr++)
+	{
+		bodyRectangle.setPosition(itr->position.x * graphicsSize, itr->position.y * graphicsSize);
+		one_window.draw(bodyRectangle);
+	}
+}

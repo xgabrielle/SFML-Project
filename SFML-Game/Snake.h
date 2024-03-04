@@ -40,6 +40,6 @@ public:
 	void Move();
 	void Tick();
 	void Cut(int one_segments);
-	void Render(RenderWindow one_window);
+	void Render(RenderWindow& one_window);
 };
 
