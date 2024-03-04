@@ -60,3 +60,13 @@ void World::Update(Snake& one_player)
 		one_player.Lose();
 	}
 }
+void World::Render(RenderWindow& one_window) // why do we have a reference here?
+{
+	for (int i = 0; i < 4; i++)
+	{
+		one_window.draw(bounds[i]); // drawing the lines of the world?
+	}
+	one_window.draw(appleShape); // apple block?
+}
+
+int World::GetBlockSize() { return blockSize; } // i don't understand these returns?? why are we returning 16?? cuz that's the size of the world?? how??
