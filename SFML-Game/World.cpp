@@ -34,3 +34,29 @@ World::World(Vector2u one_windSize)
 	}
 }
 World:: ~World() {};
+
+void World::RespawnApple()
+{
+	int maxX = (windowSize.x / blockSize) - 2;
+	int maxY = (windowSize.y / blockSize) - 2; // don't understand the math on either ..
+	appleItem = Vector2i(rand() % maxX + 1, rand() % maxY + 1);
+	appleShape.setPosition(appleItem.x * blockSize, appleItem.y * blockSize); // i guess this make sure that the random spot for the apple are inside the world? also the math here ..tf??
+}
+
+void World::Update(Snake& one_player)
+{
+	if (one_player.GetPosition() == appleItem)
+	{
+		one_player.Extend();
+		one_player.IncreaseScore();
+		RespawnApple();
+	}
+	int gridSizeX = windowSize.x / blockSize; // maths???
+	int gridSizeY = windowSize.y / blockSize;
+
+	if (one_player.GetPosition().x <= 0 || one_player.GetPosition().y <= 0 || one_player.GetPosition().x >= gridSizeX - 1 || one_player.GetPosition().y >= gridSizeY - 1) // if you smash into the
+		                                                                                                                                                                  // wall only or itself too??
+	{
+		one_player.Lose();
+	}
+}
