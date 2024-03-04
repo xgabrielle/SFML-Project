@@ -9,7 +9,7 @@ class World
 	Vector2i appleItem;
 	int blockSize;
 
-	CircleShape appleSize;
+	CircleShape appleShape;
 	RectangleShape bounds[4]; // not sure what this is?? is it the playerfield that is a rectangle so = 4 corners? or 4 walls?
 public:
 	World(Vector2u one_windSize); // wind??
