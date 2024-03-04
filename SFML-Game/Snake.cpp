@@ -14,7 +14,7 @@ Snake::~Snake() {}
 void Snake::Reset()
 {
 	snakeBody.clear();
-	snakeBody.push_back(SnakeSegment(5, 7));
+	snakeBody.push_back(SnakeSegment(5, 7)); // look up push_back agian ..
 	snakeBody.push_back(SnakeSegment(5, 6));
 	snakeBody.push_back(SnakeSegment(5, 5));
 
@@ -45,3 +45,114 @@ void Snake::IncreaseScore() { score += 10; }
 bool Snake::HasLost() { return hasLost; }
 void Snake::Lose() { hasLost = true; }
 void Snake::ToggleLost() { hasLost = !hasLost; }
+
+void Snake::Extend()
+{
+	if (snakeBody.empty()) { return; } // what does empty stand for??
+	
+	SnakeSegment& tail_head = snakeBody[snakeBody.size() - 1]; // reference and [snakeBody.size()-1] = something with the memory. Give space without holding space .. something, something ..
+	                                   // adding more body but why is it negative?
+	
+	if (snakeBody.size() > 1) {} // not sure what this one does since there's nothing inbetween {}?? need a better explanation for the 'size'
+	
+	SnakeSegment& tail_bone = snakeBody[snakeBody.size() - 2]; // same as line 53,54. Again, why negative?
+		
+	
+
+	if (tail_head.position.x == tail_bone.position.x)
+	{
+		if (tail_head.position.y > tail_bone.position.y)
+		{
+			snakeBody.push_back(SnakeSegment(tail_head.position.x, tail_head.position.y + 1));
+		}
+		else
+		{
+			snakeBody.push_back(SnakeSegment(tail_head.position.x, tail_head.position.y - 1));
+		}
+	}
+	else if (tail_head.position.y == tail_bone.position.y)
+	{
+		if (tail_head.position.x > tail_bone.position.x)
+		{
+			snakeBody.push_back(SnakeSegment(tail_head.position.x + 1, tail_head.position.y));
+		}
+		else
+		{
+			snakeBody.push_back(SnakeSegment(tail_head.position.x - 1, tail_head.position.y));
+		}
+	}
+	else
+	{
+		if (direction == Direction::Up)
+		{
+			snakeBody.push_back(SnakeSegment(tail_head.position.x, tail_head.position.y + 1));
+		}
+		else if (direction == Direction::Down)
+		{
+			snakeBody.push_back(SnakeSegment(tail_head.position.x, tail_head.position.y - 1));
+		}
+		else if (direction == Direction::Left)
+		{
+			snakeBody.push_back(SnakeSegment(tail_head.position.x + 1, tail_head.position.y)); // shouldn't x be -1?
+		}
+		else if (direction == Direction::Right)
+		{
+			snakeBody.push_back(SnakeSegment(tail_head.position.x - 1, tail_head.position.y));
+		}
+	}
+
+}
+void Snake::Tick() // this name needs more explanation ..
+{
+	if (snakeBody.empty()) { return; }
+	if (direction == Direction::None) { return; } // none = standing still?
+	Move();
+	CheckCollision();
+}
+void Snake::Move()
+{
+	for (int i = snakeBody.size()-1; i > 0; i--) // not sure about this for-loop either??
+	{
+		snakeBody[i].position = snakeBody[i - 1].position;
+	}
+	if (direction == Direction::Left)
+	{
+		--snakeBody[0].position.x; // can i have the '--' after instead of front? is that the same??
+	}
+	else if (direction == Direction::Right)
+	{
+		++snakeBody[0].position.x;
+	}
+	else if (direction == Direction::Up)
+	{
+		--snakeBody[0].position.y; // why is this negative
+	}
+	else if (direction == Direction::Down)
+	{
+		++snakeBody[0].position.y; // and this positive?
+	}
+}
+void Snake::CheckCollision()
+{
+	if (snakeBody.size() < 5) { return; } // not sure what the "over 4 segments" mean??
+	SnakeSegment& head = snakeBody.front();
+	for (auto itr = snakeBody.begin()+1; itr != snakeBody.end(); itr++)// what does itr stand for?
+	{
+		if (itr->position == head.position) // i guess this is if the head smashes into the snake body??
+		{
+			int segments = snakeBody.end() - itr;
+			Cut(segments); // does this mean we're only losing a bir of our tail/point?
+			break;
+		}
+	}
+}
+void Snake::Cut(int one_segments) // why can't i use numbers in the name when the book does it??
+{
+	for (int i = 0; i < one_segments; i++)
+	{
+		snakeBody.pop_back(); // look up pop_back??
+	}
+	--lives;
+	if (!lives) { Lose();return; } // do we lose body or just life?
+}
+
