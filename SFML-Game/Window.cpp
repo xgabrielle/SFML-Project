@@ -13,7 +13,7 @@ MyWindow::MyWindow(const string& title, const Vector2u& size) // window size?
 }
 MyWindow::~MyWindow() { Destroy(); }
 
-void MyWindow::Setup(const string& title, const Vector2u& size) // same Q here ?
+void MyWindow::Setup(const string& title, const Vector2u& size) // same Q here ?  don't underastand the "Setup"
 {
 	windowTitle = title;
 	windowSize = size;
@@ -22,7 +22,9 @@ void MyWindow::Setup(const string& title, const Vector2u& size) // same Q here ?
 	Create();
 }
 
-void MyWindow::Create() // this whole thing is a mess?
+RenderWindow& MyWindow::GetRenderWindow() { return window; }
+
+void MyWindow::Create() // this whole thing is a mess? .. read about it .. still don't get it ...
 {
 	auto style{0};
 	if (isFullscreen)
@@ -39,9 +41,9 @@ void MyWindow::Destroy()
 {
 	window.close();
 }
-void MyWindow::Update() // read more about
+void MyWindow::Update() 
 {
-	Event event;
+	Event event; // this is so the buttons we press works .. something, something ..
 	while (window.pollEvent(event))
 	{
 		if (event.type == Event::Closed)
@@ -54,7 +56,7 @@ void MyWindow::Update() // read more about
 		}
 	}
 }
-void MyWindow::ToggleFullscreen() // read more about
+void MyWindow::ToggleFullscreen() // read more about ... kinda understand .. window gets bigger ish
 {
 	isFullscreen = !isFullscreen;
 	Destroy();

@@ -6,7 +6,7 @@ using namespace std;
 
 class MyWindow
 {
-public:
+
 	void Setup(const string& title, const Vector2u& size); // need more understanding here ..
 	void Destroy();
 	void Create();
@@ -17,11 +17,11 @@ public:
 	bool isDone;
 	bool isFullscreen;
 
-
+public:
 	MyWindow();
 	MyWindow(const string& title, const Vector2u& size);
 	~MyWindow();
-
+	RenderWindow& GetRenderWindow();
 	void BeginDraw();
 	void EndDraw();
 

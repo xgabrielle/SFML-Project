@@ -3,9 +3,9 @@
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-Snake::Snake(int one_blockSize)
+Snake::Snake(int blockSize)
 {
-	graphicsSize = one_blockSize;
+	graphicsSize = blockSize;
 	bodyRectangle.setSize(Vector2f(graphicsSize - 1, graphicsSize - 1));
 	Reset();
 }
@@ -24,7 +24,7 @@ void Snake::Reset()
 	score = 0;
 	hasLost = false;
 }
-void Snake::SetDirection(Direction one_direction) { direction = one_direction; }
+void Snake::SetDirection(Direction direction) { direction = direction; }
 Direction Snake::GetDirection(){ return direction; }
 int Snake::GetSpeed() { return snakeSpeed; }
 

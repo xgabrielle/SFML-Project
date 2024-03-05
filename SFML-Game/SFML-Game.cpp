@@ -3,28 +3,25 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "Game.h"
+#include "Window.h"
+#include "Snake.h"
+#include "World.h"
 using namespace sf;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "SFML works!");
-    sf::RectangleShape rectangle (Vector2f(128.0f, 128.0f));
-    rectangle.setFillColor(sf::Color::Magenta);
-    rectangle.setPosition(320, 240);
-    rectangle.setOrigin(rectangle.getSize().x / 2, rectangle.getSize().y / 2); // centre the rectangle
-
-    while (window.isOpen())
+    void main(int argc, char** argv[]);
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
 
-        window.clear();
-        window.draw(rectangle);
-        window.display();
+   
+        Game game;
+        while (!game.GetWindow()->IsDone()) {
+           
+            game.HandleInput();
+            game.Update();
+            game.Render();
+        }
     }
 
     return 0;

@@ -1,14 +1,19 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
-enum class Direction{None, Up, Down, Left, Right};
-using SnakeContainer = std::vector<SnakeSegment>;
 using namespace sf;
+using namespace std;
+
+
 struct SnakeSegment
 {
 	SnakeSegment(int x, int y) : position(x, y) {};
 	Vector2i position;
 };
+
+enum class Direction { None, Up, Down, Left, Right };
+using SnakeContainer = std::vector<SnakeSegment>;
+
 class Snake
 {
 	void CheckCollision();
@@ -22,10 +27,10 @@ class Snake
 	RectangleShape bodyRectangle;
 
 public:
-	Snake(int one_blockSize);
+	Snake(int blockSize);
     ~Snake();
 
-	void SetDirection(Direction one_direction);
+	void SetDirection(Direction direction);
 	Direction GetDirection();
 	int GetSpeed();
 	Vector2i GetPosition();
@@ -39,7 +44,7 @@ public:
 	void Reset();
 	void Move();
 	void Tick();
-	void Cut(int one_segments);
-	void Render(RenderWindow& one_window);
+	void Cut(int segments);
+	void Render(RenderWindow& window);
 };
 
