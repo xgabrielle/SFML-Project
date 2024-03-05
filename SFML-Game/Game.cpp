@@ -29,20 +29,35 @@ void Game::HandleInput()
 		snake.SetDirection(Direction::Right);
 	}
 };
+Time Game::GetElapsed() { return elapsed; }
+//void Game::RestartClock() { elapsed = clock.restart(); }
+
+void Game::RestartClock()
+{
+	elapsed += clock.restart();
+	float frametime = 1.0f / 60.0f;
+	if (elapsed.asSeconds() >= frametime)
+	{
+		elapsed -= seconds(frametime);
+	}
+}
+
 void Game::Update() 
 {
-	/*float timestep = 1.0f / snake.GetSpeed();
-	if (elased >= timestep)
+	float timestep = 1.0f / snake.GetSpeed();
+	if (elapsed >= seconds (timestep))
 	{
 		snake.Tick();
 		world.Update(snake);
-		elapsed -= timestep;
+		elapsed -= seconds (timestep);
 		if (snake.HasLost())
 		{
 			snake.Reset();
 		}
-	}*/
+	}
 };
+
+
 void Game::Render() 
 {
 	window.BeginDraw();

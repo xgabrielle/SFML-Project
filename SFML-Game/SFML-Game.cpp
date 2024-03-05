@@ -11,16 +11,32 @@ using namespace sf;
 
 int main()
 {
+   
     void main(int argc, char** argv[]);
     {
-
+        
+        Event event;
    
         Game game;
+        Clock clock;
+        Time time = clock.getElapsedTime();
+       
         while (!game.GetWindow()->IsDone()) {
            
             game.HandleInput();
             game.Update();
             game.Render();
+            game.RestartClock();
+
+            Time elapsed = clock.getElapsedTime();
+            float seconds = time.asSeconds();
+            Int32 milliseconds = time.asMilliseconds();
+            Int64 microseconds = time.asMicroseconds();
+            time = clock.restart();
+
+
+            float fElapsed = elapsed.asSeconds();
+            
         }
     }
 
