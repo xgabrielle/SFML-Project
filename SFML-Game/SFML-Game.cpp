@@ -5,41 +5,53 @@
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 #include "Window.h"
-#include "Snake.h"
-#include "World.h"
 using namespace sf;
 
 int main()
 {
-   
-    void main(int argc, char** argv[]);
-    {
-        
-        Event event;
-   
         Game game;
-        Clock clock;
-        Time time = clock.getElapsedTime();
+
        
-        while (!game.GetWindow()->IsDone()) {
-           
+        while (!game.GetWindow()->IsDone()) 
+        {
+            Event event;
+            while (game.GetWindow()->GetRenderWindow().pollEvent(event))
+            {
+                if (event.type == Event:: Closed)
+                { game.GetWindow()->Update();
+                 
+                }
+            }
+            Clock clock;
             game.HandleInput();
             game.Update();
             game.Render();
             game.RestartClock();
 
-            Time elapsed = clock.getElapsedTime();
-            float seconds = time.asSeconds();
-            Int32 milliseconds = time.asMilliseconds();
-            Int64 microseconds = time.asMicroseconds();
-            time = clock.restart();
-
-
-            float fElapsed = elapsed.asSeconds();
-            
+            Time elapsed = clock.restart();
+            float fElapsed = elapsed.asSeconds(); 
         }
-    }
+   
 
     return 0;
 }
 
+//#include <SFML/Graphics.hpp>
+//
+//int main() {
+//    sf::RenderWindow window(sf::VideoMode(800, 600), "Minimal Example");
+//
+//    while (window.isOpen()) {
+//        sf::Event event;
+//        while (window.pollEvent(event)) {
+//            if (event.type == sf::Event::Closed) {
+//                window.close();
+//            }
+//        }
+//
+//        window.clear(sf::Color::White);
+//        window.display();
+//    }
+//
+//    return 0;
+//}

@@ -26,16 +26,20 @@ RenderWindow& MyWindow::GetRenderWindow() { return window; }
 
 void MyWindow::Create() // this whole thing is a mess? .. read about it .. still don't get it ...
 {
-	auto style{0};
-	if (isFullscreen)
-	{
-		style = Style::Fullscreen;
-	}
-	else
-	{
-		style = Style::Default;
-	}
-	window.create({ windowSize.x,windowSize.y, 32 }, windowTitle, style); // what's happening here?
+	auto style = (isFullscreen ? Style::Fullscreen
+		: Style::Default);
+	window.create({ windowSize.x, windowSize.y, 32 },
+		windowTitle, style);
+	//auto style{0};
+	//if (isFullscreen)
+	//{
+	//	style = Style::Fullscreen;
+	//}
+	//else
+	//{
+	//	style = Style::Default;
+	//}
+	//window.create({ windowSize.x,windowSize.y, 32 }, windowTitle, style); // what's happening here?
 }
 void MyWindow::Destroy()
 {
@@ -48,6 +52,7 @@ void MyWindow::Update()
 	{
 		if (event.type == Event::Closed)
 		{
+			cout << event.type << endl;
 			isDone = true;
 		}
 		else if (event.type == Event::KeyPressed&&event.key.code == Keyboard::F5)

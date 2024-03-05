@@ -5,10 +5,9 @@
 
 Game::Game() : window("Snake", Vector2u(800, 600)), snake(world.GetBlockSize()), world(Vector2u(800, 600))
 {
-
+	
 }
 Game :: ~Game(){}
-
 
 void Game::HandleInput() 
 {
@@ -30,17 +29,17 @@ void Game::HandleInput()
 	}
 };
 Time Game::GetElapsed() { return elapsed; }
-//void Game::RestartClock() { elapsed = clock.restart(); }
+void Game::RestartClock() { elapsed = clock.restart(); }
 
-void Game::RestartClock()
-{
-	elapsed += clock.restart();
-	float frametime = 1.0f / 60.0f;
-	if (elapsed.asSeconds() >= frametime)
-	{
-		elapsed -= seconds(frametime);
-	}
-}
+//void Game::RestartClock()
+//{
+//	elapsed += clock.restart();
+//	float frametime = 1.0f / 60.0f;
+//	if (elapsed.asSeconds() >= frametime)
+//	{
+//		elapsed -= seconds(frametime);
+//	}
+//}
 
 void Game::Update() 
 {
