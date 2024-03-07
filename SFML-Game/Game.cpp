@@ -3,10 +3,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-Game::Game() : window("Snake", Vector2u(800, 600)), snake(world.GetBlockSize()), world(Vector2u(800, 600))
-{
-	
-}
+Game::Game() : window("Snake", Vector2u(800, 600)), snake(world.GetBlockSize()), world(Vector2u(800, 600)){}
 Game :: ~Game(){}
 
 void Game::HandleInput() 
@@ -41,6 +38,8 @@ void Game::RestartClock() { elapsed = clock.restart(); }
 //	}
 //}
 
+
+
 void Game::Update() 
 {
 	float timestep = 1.0f / snake.GetSpeed();
@@ -66,3 +65,4 @@ void Game::Render()
 };
 
 MyWindow* Game::GetWindow() { return &window; }
+

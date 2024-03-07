@@ -43,21 +43,21 @@ void World::RespawnApple()
 	appleShape.setPosition(appleItem.x * blockSize, appleItem.y * blockSize); // i guess this make sure that the random spot for the apple are inside the world? also the math here ..tf??
 }
 
-void World::Update(Snake& one_player)
+void World::Update(Snake& player)
 {
-	if (one_player.GetPosition() == appleItem)
+	if (player.GetPosition() == appleItem)
 	{
-		one_player.Extend();
-		one_player.IncreaseScore();
+		player.Extend();
+		player.IncreaseScore();
 		RespawnApple();
 	}
 	int gridSizeX = windowSize.x / blockSize; // maths???
 	int gridSizeY = windowSize.y / blockSize;
 
-	if (one_player.GetPosition().x <= 0 || one_player.GetPosition().y <= 0 || one_player.GetPosition().x >= gridSizeX - 1 || one_player.GetPosition().y >= gridSizeY - 1) // if you smash into the
+	if (player.GetPosition().x <= 0 || player.GetPosition().y <= 0 || player.GetPosition().x >= gridSizeX - 1 || player.GetPosition().y >= gridSizeY - 1) // if you smash into the
 		                                                                                                                                                                  // wall only or itself too??
 	{
-		one_player.Lose();
+		player.Lose();
 	}
 }
 void World::Render(RenderWindow& one_window) // why do we have a reference here?

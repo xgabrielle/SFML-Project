@@ -25,8 +25,9 @@ public:
 	void BeginDraw();
 	void EndDraw();
 
-	void Update();
+	void WUpdate();
 
+	
 	bool IsDone();
 	bool IsFullscreen();
 	Vector2u GetWindowSize();

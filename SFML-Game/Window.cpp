@@ -26,26 +26,29 @@ RenderWindow& MyWindow::GetRenderWindow() { return window; }
 
 void MyWindow::Create() // this whole thing is a mess? .. read about it .. still don't get it ...
 {
-	auto style = (isFullscreen ? Style::Fullscreen
+	/*auto style = (isFullscreen ? Style::Fullscreen
 		: Style::Default);
 	window.create({ windowSize.x, windowSize.y, 32 },
-		windowTitle, style);
-	//auto style{0};
-	//if (isFullscreen)
-	//{
-	//	style = Style::Fullscreen;
-	//}
-	//else
-	//{
-	//	style = Style::Default;
-	//}
-	//window.create({ windowSize.x,windowSize.y, 32 }, windowTitle, style); // what's happening here?
+		windowTitle, style);*/
+	auto style{0};
+	if (isFullscreen)
+	{
+		style = Style::Fullscreen; // does what it says .. i think??
+	}
+	
+	else
+	{
+		style = Style::Default; // can swap between  Titlebar | Resize | Close
+		
+
+	}
+	window.create({ windowSize.x,windowSize.y, 32 }, windowTitle, style); // what's happening here? invokes it??
 }
 void MyWindow::Destroy()
 {
 	window.close();
 }
-void MyWindow::Update() 
+void MyWindow::WUpdate() 
 {
 	Event event; // this is so the buttons we press works .. something, something ..
 	while (window.pollEvent(event))
@@ -54,6 +57,7 @@ void MyWindow::Update()
 		{
 			cout << event.type << endl;
 			isDone = true;
+			
 		}
 		else if (event.type == Event::KeyPressed&&event.key.code == Keyboard::F5)
 		{

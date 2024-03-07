@@ -11,17 +11,21 @@ int main()
 {
         Game game;
 
-       
+        
         while (!game.GetWindow()->IsDone()) 
         {
             Event event;
             while (game.GetWindow()->GetRenderWindow().pollEvent(event))
             {
                 if (event.type == Event:: Closed)
-                { game.GetWindow()->Update();
-                 
+                { 
+                   game.GetWindow()->WUpdate();
+                   
+                
                 }
             }
+            if (game.GetWindow()->IsDone())
+                break;
             Clock clock;
             game.HandleInput();
             game.Update();
