@@ -51,7 +51,7 @@ void MyWindow::Destroy()
 void MyWindow::WUpdate() 
 {
 	Event event; // this is so the buttons we press works .. something, something ..
-	while (window.pollEvent(event))
+	while (window.pollEvent(event)) // don't know what any of this does. Nothing changes when you comment it out??
 	{
 		if (event.type == Event::Closed)
 		{

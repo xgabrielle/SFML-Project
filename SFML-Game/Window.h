@@ -9,7 +9,7 @@ class MyWindow
 
 	void Setup(const string& title, const Vector2u& size); // need more understanding here ..
 	void Destroy();
-	void Create();
+	
 
 	RenderWindow window;
 	Vector2u windowSize;
@@ -24,6 +24,8 @@ public:
 	RenderWindow& GetRenderWindow();
 	void BeginDraw();
 	void EndDraw();
+
+	void Create();
 
 	void WUpdate();
 
