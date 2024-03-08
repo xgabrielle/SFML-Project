@@ -19,7 +19,7 @@ int main()
             {
                 if (event.type == Event:: Closed)
                 { 
-                   game.GetWindow()->Create();
+                   game.GetWindow()->IsDone();
                    
                 
                 }

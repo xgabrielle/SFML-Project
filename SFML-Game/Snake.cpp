@@ -14,7 +14,7 @@ Snake::~Snake() {}
 void Snake::Reset()
 {
 	snakeBody.clear();
-	snakeBody.push_back(SnakeSegment(5, 7)); // look up push_back agian ..
+	snakeBody.push_back(SnakeSegment(5, 7)); // look up push_back again ..
 	snakeBody.push_back(SnakeSegment(5, 6));
 	snakeBody.push_back(SnakeSegment(5, 5));
 
@@ -24,7 +24,7 @@ void Snake::Reset()
 	score = 0;
 	hasLost = false;
 }
-void Snake::SetDirection(Direction direction) { direction = direction; }
+void Snake::SetDirection(Direction direction) { this->direction = direction; }
 Direction Snake::GetDirection(){ return direction; }
 int Snake::GetSpeed() { return snakeSpeed; }
 

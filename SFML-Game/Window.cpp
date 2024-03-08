@@ -40,7 +40,6 @@ void MyWindow::Create() // this whole thing is a mess? .. read about it .. still
 	{
 		style = Style::Default; // can swap between  Titlebar | Resize | Close
 		
-
 	}
 	window.create({ windowSize.x,windowSize.y, 32 }, windowTitle, style); // what's happening here? invokes it??
 }

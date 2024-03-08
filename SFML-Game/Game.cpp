@@ -10,18 +10,22 @@ void Game::HandleInput()
 {
 	if(Keyboard::isKeyPressed(Keyboard::Up) && snake.GetDirection() != Direction::Down)
 	{
+		cout << "up?\n";
 		snake.SetDirection(Direction::Up); 
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::Down) && snake.GetDirection() != Direction::Up)
 	{
+		cout << "down?\n";
 		snake.SetDirection(Direction::Down);
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::Left) && snake.GetDirection() != Direction::Right)
 	{
+		cout << "left?\n";
 		snake.SetDirection(Direction::Left);
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::Right) && snake.GetDirection() != Direction::Left)
 	{
+		cout << "right?\n";
 		snake.SetDirection(Direction::Right);
 	}
 };
@@ -30,7 +34,7 @@ void Game::RestartClock() { elapsed = clock.restart(); }
 
 //void Game::RestartClock()
 //{
-//	elapsed += clock.restart();
+//	
 //	float frametime = 1.0f / 60.0f;
 //	if (elapsed.asSeconds() >= frametime)
 //	{
@@ -42,6 +46,7 @@ void Game::RestartClock() { elapsed = clock.restart(); }
 
 void Game::Update() 
 {
+	elapsed += clock.restart();
 	float timestep = 1.0f / snake.GetSpeed();
 	if (elapsed >= seconds (timestep))
 	{
