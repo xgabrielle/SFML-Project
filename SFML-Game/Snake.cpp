@@ -83,19 +83,19 @@ void Snake::Extend()
 	}
 	else
 	{
-		if (direction == Direction::Up)
+		if (direction == Direction::Upward)
 		{
 			snakeBody.push_back(SnakeSegment(tail_head.position.x, tail_head.position.y + 1));
 		}
-		else if (direction == Direction::Down)
+		else if (direction == Direction::Downward)
 		{
 			snakeBody.push_back(SnakeSegment(tail_head.position.x, tail_head.position.y - 1));
 		}
-		else if (direction == Direction::Left)
+		else if (direction == Direction::Leftward)
 		{
 			snakeBody.push_back(SnakeSegment(tail_head.position.x + 1, tail_head.position.y)); // shouldn't x be -1?
 		}
-		else if (direction == Direction::Right)
+		else if (direction == Direction::Rightward)
 		{
 			snakeBody.push_back(SnakeSegment(tail_head.position.x - 1, tail_head.position.y));
 		}
@@ -115,19 +115,19 @@ void Snake::Move()
 	{
 		snakeBody[i].position = snakeBody[i - 1].position;
 	}
-	if (direction == Direction::Left)
+	if (direction == Direction::Leftward)
 	{
 		--snakeBody[0].position.x; // can i have the '--' after instead of front? is that the same??
 	}
-	else if (direction == Direction::Right)
+	else if (direction == Direction::Rightward)
 	{
 		++snakeBody[0].position.x;
 	}
-	else if (direction == Direction::Up)
+	else if (direction == Direction::Upward)
 	{
 		--snakeBody[0].position.y; // why is this negative
 	}
-	else if (direction == Direction::Down)
+	else if (direction == Direction::Downward)
 	{
 		++snakeBody[0].position.y; // and this positive?
 	}

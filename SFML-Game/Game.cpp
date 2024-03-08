@@ -8,25 +8,25 @@ Game :: ~Game(){}
 
 void Game::HandleInput() 
 {
-	if(Keyboard::isKeyPressed(Keyboard::Up) && snake.GetDirection() != Direction::Down)
+	if(Keyboard::isKeyPressed(Keyboard::Up) && snake.GetDirection() != Direction::Downward)
 	{
 		cout << "up?\n";
-		snake.SetDirection(Direction::Up); 
+		snake.SetDirection(Direction::Upward); 
 	}
-	else if (Keyboard::isKeyPressed(Keyboard::Down) && snake.GetDirection() != Direction::Up)
+	else if (Keyboard::isKeyPressed(Keyboard::Down) && snake.GetDirection() != Direction::Upward)
 	{
 		cout << "down?\n";
-		snake.SetDirection(Direction::Down);
+		snake.SetDirection(Direction::Downward);
 	}
-	else if (Keyboard::isKeyPressed(Keyboard::Left) && snake.GetDirection() != Direction::Right)
+	else if (Keyboard::isKeyPressed(Keyboard::Left) && snake.GetDirection() != Direction::Rightward)
 	{
 		cout << "left?\n";
-		snake.SetDirection(Direction::Left);
+		snake.SetDirection(Direction::Leftward);
 	}
-	else if (Keyboard::isKeyPressed(Keyboard::Right) && snake.GetDirection() != Direction::Left)
+	else if (Keyboard::isKeyPressed(Keyboard::Right) && snake.GetDirection() != Direction::Leftward)
 	{
 		cout << "right?\n";
-		snake.SetDirection(Direction::Right);
+		snake.SetDirection(Direction::Rightward);
 	}
 };
 Time Game::GetElapsed() { return elapsed; }

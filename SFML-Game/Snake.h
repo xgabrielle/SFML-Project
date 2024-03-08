@@ -11,7 +11,7 @@ struct SnakeSegment
 	Vector2i position;
 };
 
-enum class Direction { None, Up, Down, Left, Right };
+enum class Direction { None, Upward, Downward, Leftward, Rightward };
 using SnakeContainer = std::vector<SnakeSegment>;
 
 class Snake

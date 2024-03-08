@@ -3,10 +3,10 @@
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-World::World(Vector2u one_windSize)
+World::World(Vector2u windSize)
 {
 	blockSize = 16;
-	windowSize = one_windSize;
+	windowSize = windSize;
 	RespawnApple();
 	
 	appleShape.setFillColor(Color::Red);
@@ -14,7 +14,7 @@ World::World(Vector2u one_windSize)
 	for (int i = 0; i < 4; i++)
 	{
 		bounds[i].setFillColor(Color(150, 0, 0)); // why is the color printed out i numbers here?
-		if (!(i + 1) % 2) // why modulo??
+		if (!(i + 1) % 2) // why modulo (lol,beer)??
 		{
 			bounds[i].setSize(Vector2f(windowSize.x, blockSize));
 		}
@@ -60,13 +60,13 @@ void World::Update(Snake& player)
 		player.Lose();
 	}
 }
-void World::Render(RenderWindow& one_window) // why do we have a reference here?
+void World::Render(RenderWindow& window) // why do we have a reference here?
 {
 	for (int i = 0; i < 4; i++)
 	{
-		one_window.draw(bounds[i]); // drawing the lines of the world?
+		window.draw(bounds[i]); // drawing the lines of the world?
 	}
-	one_window.draw(appleShape); // apple block?
+	window.draw(appleShape); // apple block?
 }
 
 int World::GetBlockSize() { return blockSize; } // i don't understand these returns?? why are we returning 16?? cuz that's the size of the world?? how??
