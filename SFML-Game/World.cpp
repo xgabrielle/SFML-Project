@@ -14,7 +14,7 @@ World::World(Vector2u windSize)
 	for (int i = 0; i < 4; i++)
 	{
 		bounds[i].setFillColor(Color(150, 0, 0)); // why is the color printed out i numbers here?
-		if (!(i + 1) % 2) // why modulo (lol,beer)??
+		if (!(i + 1) % 2) // why modulo
 		{
 			bounds[i].setSize(Vector2f(windowSize.x, blockSize));
 		}
